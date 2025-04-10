@@ -13,6 +13,7 @@ import Particles from "../../../fbo-utils/Particles";
 import LabOne from "../shader/SimMat";
 import useInitAndAnimateFBO from "../../../fbo-utils/hooks/useInitAndAnimateFBO";
 import { FBOType } from "../../../../types/FboType";
+import { useWindowResizeReload } from "../../../fbo-utils/hooks/useOnResizeReload";
 
 extend({
   LabOne,
@@ -40,7 +41,7 @@ const SceneFBO: FC<FBOType> = ({ size, particles, pos }) => {
   dataTex.needsUpdate = true;
 
   useInitAndAnimateFBO(size, scene, cam, simRef, renderRef);
-
+  useWindowResizeReload();
   return (
     <>
       <PortalMesh scene={scene}>
