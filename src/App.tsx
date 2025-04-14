@@ -14,9 +14,9 @@ const App = () => {
   const { particles, random2D } = useInitArrays({ size: texSize });
 
   const paths = [
-    { path: "/", title: "01" },
-    { path: "/02", title: "02" },
-    { path: "/03", title: "03" },
+    { path: "/", title: "v_0_1" },
+    { path: "/02", title: "v_0_2" },
+    { path: "/03", title: "v_0_3" },
   ];
 
   return (

@@ -37,26 +37,7 @@ const useInitArrays = ({ size = 512 }: { size?: number }) => {
     return data;
   }, [size]);
 
-  // random value to use them as velocity etc
-  const random4D = useMemo(() => {
-    const total = size * size * 4;
-    const random4D = new Float32Array(total);
-    for (let i = 0; i < total; i++) {
-      const stride = i * 4;
-      const x = Math.random() - 0.5;
-      const y = Math.random() - 0.5;
-      const z = Math.random() - 0.5;
-      const w = Math.random() - 0.5;
-
-      random4D[stride] = x;
-      random4D[stride + 1] = y;
-      random4D[stride + 2] = z;
-      random4D[stride + 3] = w;
-    }
-    return random4D;
-  }, [size]);
-
-  return { particles, random2D, random4D };
+  return { particles, random2D };
 };
 
 export default useInitArrays;

@@ -2,7 +2,7 @@
 
 import { NavLink } from "react-router-dom";
 
-const MotionNav = ({
+const Nav = ({
   paths,
 }: {
   paths: {
@@ -11,7 +11,8 @@ const MotionNav = ({
   }[];
 }) => {
   return (
-    <nav className="fixed top-5 left-5 z-10  w-full ">
+    <nav className="absolute z-30 col-start-2 row-span-1 bg-black flex gap-4 p-2">
+      <h3 className="text-white">Variants</h3>
       {paths.map(({ path, title }, i) => (
         <MyLink key={`${path}-${title}-${i}`} path={path} title={title} />
       ))}
@@ -23,7 +24,7 @@ const MyLink = ({ path, title }: { path: string; title: string }) => {
   return (
     <NavLink
       className={({ isActive }) =>
-        `${isActive ? "text-neutral-200" : "text-neutral-500 "} `
+        `${isActive ? "text-[#31f5ff]" : "text-neutral-200 "} `
       }
       to={path}
     >
@@ -32,4 +33,4 @@ const MyLink = ({ path, title }: { path: string; title: string }) => {
   );
 };
 
-export default MotionNav;
+export default Nav;

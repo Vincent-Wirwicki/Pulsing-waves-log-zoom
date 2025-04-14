@@ -15,7 +15,7 @@ declare module "@react-three/fiber" {
 }
 
 const Particles = ({
-  uSize = 4,
+  uSize = 1,
   renderMatRef,
   particles,
 }: {
@@ -29,7 +29,7 @@ const Particles = ({
         ref={renderMatRef}
         args={[uSize]}
         blending={AdditiveBlending}
-        depthWrite={true}
+        depthWrite={false}
         transparent={false}
       />
       <bufferGeometry>

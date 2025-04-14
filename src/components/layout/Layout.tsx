@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import MotionNav from "./AnimNav";
+import Nav from "./Nav";
 
 const Layout = ({
   paths,
@@ -10,21 +10,22 @@ const Layout = ({
   }[];
 }) => {
   return (
-    <main className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center py-8 bg-black">
-      <MotionNav paths={paths} />
-      {/* CANVAS ------------------ */}
-      <div className="fixed top-0 left-0 w-screen h-screen border">
-        <Outlet />
-      </div>
-      {/* <div className="fixed z-10 top-0 left-0 col-start-2 w-screen h-screen border flex justify-center items-center text-neutral-200 pointer-events-none">
-          A deep dive
-        </div> */}
-      {/* CANVAS------------------- */}
-      {/* BOTTOM PART ------------- */}
-      {/* <h1 className="fixed z-10 text-neutral-200 font-serif">
-        When you stare into the abyss, the abyss stares back into you."
-      </h1> */}
-      {/* BOTTOM PART ------------- */}
+    <main className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center p-20 bg-black">
+      <section className="relative z-20 w-full h-full grid grid-cols-2 grid-rows-2 p-10">
+        <Nav paths={paths} />
+        <div className="absolute w-full h-full col-span-2 row-span-2 z-10  border-[#31f5ff]">
+          <Outlet />
+        </div>
+        <p className="absolute z-30 col-start-1 row-start-2 bg-black self-end text-white justify-self-start ">
+          exploring fractal zoom technique
+        </p>
+        <h1 className="absolute z-20 text-6xl md:text-xl p-4 bg-black text-[#31f5ff] ">
+          + Void +
+        </h1>
+        <h2 className="absolute p-4 bg-black z-20 text-6xl md:text-xl text-[#31f5ff] col-start-2 row-start-2 self-end justify-self-end   ">
+          + waVe +
+        </h2>
+      </section>
     </main>
   );
 };

@@ -87,7 +87,7 @@ export default class LabOne extends ShaderMaterial {
       float repeat = sin(time * 2. * PI);
 
       vec4 pos = texture2D( uPositions, uv );
-
+      float ogZ = pos.z;
       float angle = atan(pos.x, pos.y);
       float radius = length(pos.xy);
       
@@ -96,15 +96,18 @@ export default class LabOne extends ShaderMaterial {
         float r = pow(0.8, repeat * float(i) ) * pow(1./0.8, repeat * float(i));
         float t1 = pow((radius*float(i)), .75 / r ) ;
         // noise
-        float n = snoiseFractal(vec3( angle *8., radius * (.1 / r) ,  1.) ) *.75 ;
+        float n = snoiseFractal(vec3( angle *8., radius * (.1 / r) ,  uTime*0.2) ) *.75 ;
         // fractal stuff
         float z1 = log(abs(sin(((radius  + n )) * 4. - uTime *2. * PI *0.4))) *.5;
         float z2 = exp(-pos.z / radius * z1 ) *.25;
         pos.z = z2 * t1;
+        
         // rotation
         pos.x = radius * cos(angle + uTime * .3) ;
         pos.y = radius * sin(angle + uTime * .3) ;
       }
+      // reset pos
+      // if(pos.z > 2.) pos.z = ogZ;
       gl_FragColor = vec4( pos);
     }
 `,
