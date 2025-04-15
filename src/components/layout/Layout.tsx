@@ -20,7 +20,7 @@ const Layout = ({
         <h1 className="title col-start-1 row-start-1 main-border">
           Void_ waVes{" "}
         </h1>
-        <p className="relative z-30 col-start-3 col-span-2 row-start-6 w-fit bg-black self-end text-white p-4 font-mono main-border">
+        <p className="relative z-30 row-span-3 row-start-6 col-start-1 lg:col-start-3 lg:col-span-2  w-fit bg-black self-end text-white p-4 font-mono main-border">
           Experiment with fractal zoom
         </p>
         <div className="relative z-30 col-start-8 row-start-6 w-fit bg-black self-end justify-self-end main-border p-2">
