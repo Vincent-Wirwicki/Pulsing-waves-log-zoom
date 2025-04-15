@@ -45,4 +45,3 @@ const Particles = ({
 };
 
 export default Particles;
-// scale={8} position={[-4, -4, 0]} pos in view
