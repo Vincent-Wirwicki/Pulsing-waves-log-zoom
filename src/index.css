@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
 
-    .inconsolata {
+    .major-mono {
         font-family: "Major Mono Display", monospace;
         font-weight: 400;
         font-style: normal;
@@ -13,7 +14,34 @@
 
     html,
     body {
-        @apply bg-black text-neutral-500 inconsolata
+        @apply bg-black text-neutral-500 major-mono
     }
 
+    main {
+        @apply fixed top-0 left-0 w-screen h-screen flex justify-center items-center lg:p-20 md:p-10 sm:p-2
+    }
+
+}
+
+@layer components {
+    .title {
+        @apply absolute z-20 lg:text-4xl md:text-xl sm:text-lg p-4 bg-black text-[#30FF95] text-lg
+    }
+
+    .nav {
+        @apply relative z-30 h-fit w-full lg:text-base sm:text-xs bg-black flex flex-col md:flex-row justify-center gap-4 p-2 border border-[#31f5ff]
+    }
+
+    .nav-grid {
+        @apply col-start-7 col-span-2 row-start-1 row-span-2 md:row-span-1 lg:col-start-6 lg:col-span-1 md:col-start-6 md:col-span-3
+    }
+
+}
+
+@layer utilities {
+
+
+    .main-border {
+        @apply border border-[#31f5ff]
+    }
 }
