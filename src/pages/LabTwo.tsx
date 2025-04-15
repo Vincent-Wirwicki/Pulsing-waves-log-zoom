@@ -18,4 +18,3 @@ const LabTwo = ({
 };
 
 export default LabTwo;
-// [0, -4, 2.8]

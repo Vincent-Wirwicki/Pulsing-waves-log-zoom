@@ -29,7 +29,7 @@
     }
 
     .nav {
-        @apply relative z-30 h-fit w-full lg:text-base sm:text-xs bg-black flex flex-col md:flex-row justify-center gap-4 p-2 border border-[#31f5ff]
+        @apply relative z-30 h-fit w-full lg:text-base sm:text-xs bg-black flex flex-col md:flex-row justify-center gap-4 p-2
     }
 
     .nav-grid {
@@ -39,7 +39,6 @@
 }
 
 @layer utilities {
-
 
     .main-border {
         @apply border border-[#31f5ff]

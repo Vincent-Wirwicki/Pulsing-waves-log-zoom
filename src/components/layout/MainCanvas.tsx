@@ -1,4 +1,3 @@
-import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactNode } from "react";
 
@@ -15,7 +14,6 @@ const MainCanvas = ({
     <Canvas camera={{ position: cam }} dpr={dpr}>
       <color attach={"background"} args={["black"]} />
       {children}
-      <OrbitControls />
     </Canvas>
   );
 };
