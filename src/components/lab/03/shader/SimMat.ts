@@ -94,36 +94,16 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
       float time = mod(mod(uTime*0.15 , 1.0) + 1.0, 1.0);
       float repeat = sin(time * 2. * PI);
       vec4 pos = texture2D( uPositions, uv );
+
       float angle = atan(pos.x, pos.y);
       float radius = length(pos.xy);
- 
 
-    //  ----- NO LOOP 
-      //  float fz = exp(repeat * 0.2);
-      //  float fr1 = pow(radius / fz , .1 - fz);
-      //  float fr2 = pow(radius * fz * fz , 2. - fz );
-       
-      // float z1 = log(abs(sin((1. - radius) * 8. + uTime *2. * PI *0.25 ) )) *.15;
-      // float reset = map(radius,  0.,1., PI, PI *0.5);
-      // float n = snoiseFractal(vec3( angle * 8. , radius * reset  , 1. ) ) *0.15;
-      // // float z2 = exp(-pos.z / pow(radius/zoomF , 1.15  ) * z1 + n    ) *.5;
-      // float z2 = exp(-pos.z / radius * z1 + n    ) *.5;
-
-      
-    //   pos.z = z2 * fr2 ;
-
-
-    //   pos.x = (radius) * cos(angle + uTime *0.25) ;
-    //   pos.y = (radius) * sin(angle + uTime *0.25) ;
-
-    // ----LOOPED VERSION
-    float t1,t2;
       for(int i = 0; i<4; i++){
         float fl =  exp(repeat   * 0.2 * float(i) );
         float t1 = pow((radius*float(i))  , 1. / (fl * 2.  )) *0.75;
         float r = pow(0.8, fl);
 
-      float z1 = log(abs(sin((1. - (radius +r )) * 4.  + uTime *2. * PI *0.3    ) )) *.5;
+        float z1 = log(abs(sin((1. - (radius +r )) * 4.  + uTime *2. * PI *0.3    ) )) *.5;
        
         float n = snoiseFractal(vec3( angle * 8. , radius + r , 1. ) ) *0.5;
         // float z2 = exp(-pos.z / pow(radius/zoomF , 1.15  ) * z1 + n    ) *.5;
@@ -132,89 +112,6 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
         pos.x = (radius) * cos(angle - uTime *0.3 + r) ;
         pos.y = (radius) * sin(angle - uTime *0.3 + r) ;
       }
-
-      // float z1 = log(abs(sin((1. - radius ) * 8.  - time *2. * PI   ) )) *.085;
-      // float z1 = log((radius - 0.5)   ) *.25;
-      // float n = snoise(vec2(z1, z1)) *0.1;
-      // float z2 = exp(-pos.z /  radius    )*0.075 ;
-      // pos.z = z1  ;
-
-      // pos.y -= length(z1 * radius ) * cos(angle * n ) *0.01  ;
-      // pos.x -= length(z1 * radius ) * sin(angle * n ) *0.01 ;
-
-      // float speed = offset.x * normalize(z1)*0.1 ;
-      // pos.x = radius * cos(angle  + uTime * 0.5  )   ;
-      // pos.y = radius * sin(angle  + uTime * 0.5 )  ;
-
-    //---- noise move to center start----------------------------------------------------------------
-      // float t1,t2;
-      // for(int i = 0; i<4; i++){
-      //   float fl =  exp(repeat   * 0.1 * float(i) );
-      //   float t1 = pow((radius*float(i))  , 1. / (fl * 2.  )) ;
-      //   float r = pow(0.8, fl);
-      //   float n = snoiseFractal(vec3( angle *12. , radius, 1.   ) ) *1.15 ;
-
-      //   float z1 = log(abs(sin((1. - (radius + n )) * 2.  - uTime *2. * PI *0.3    ) )) *.45;
-      //   // float z2 = exp(-pos.z / pow(radius/zoomF , 1.15  ) * z1 + n    ) *.5;
-      //   float amp = map(fl, -1.,1.,0.15,0.3);
-      //   float z2 = exp((-pos.z  )  / (radius )  * z1 +n*0.5    ) *0.3;
-      //   pos.z = z2 * t1  ;
-
-      //   pos.x = (radius) * cos(angle - uTime *0.3 ) ;
-      //   pos.y = (radius) * sin(angle - uTime *0.3 ) ;
-      // }
-    //---- noise move to center end----------------------------------------------------------------
-
-      // --- SINGLE WAVE start ---------------------------------------------------------------------
-      // float t1,t2;
-
-      // for(int i = 0; i<4; i++){
-      //   float r = pow(0.8, repeat * float(i) );
-
-      //   float t1 = pow((radius*float(i)), .15 / r ) ;
-      //   float n = snoiseFractal(vec3( angle *8., radius * (.1 / r) ,  offset.x*0.1) ) *.75 ;
-
-      //   float z1 = log(abs(sin(((radius  + n )) * 4. - uTime *2. * PI *0.4))) *.5;
-      //   float z2 = exp(-pos.z / radius * z1 ) *.25;
-      //   pos.z = z2 * t1;
-
-      //   pos.x = radius * cos(angle + uTime * .3) ;
-      //   pos.y = radius * sin(angle + uTime * .3) ;
-      // }
-      // --- SINGLE WAVE end ---------------------------------------------------------------------
-
-    //   SINGLE WAVE Varient ----------------------------------------------------
-      // float t1,t2;
-      // for(int i = 0; i<4; i++){
-      //   float timer = (mod(uTime*0.2 + float(i),.25))  * 0.25 ;
-      //   float r = pow(0.8, timer * float(i)  );
-
-      //   float t1 = pow((radius*float(i)), .2 / r ) ;
-      //   float n = snoiseFractal(vec3( angle *12., radius * (.8/ r) , 1.) ) *.5 ;
-
-      //   float z1 = log(abs(sin(((radius  + n)) * 4. - uTime *2. * PI *0.3))) *.45;
-      //   float z2 = exp(-pos.z / radius * z1 ) *.25;
-      //   pos.z = z2 * t1;
-
-      //   pos.x = radius * cos(angle + uTime *0.3) ;
-      //   pos.y = radius * sin(angle + uTime *0.3) ;
-      // }
-    //   SINGLE WAVE Varient ----------------------------------------------------
-      // test*--------------------------------------------------------------------
-      // float t1,t2;
-      
-      // for(int i = 0; i<4; i++){
-      //   float r = pow(0.8, repeat * float(i) ) * pow(1./0.8, repeat * float(i));
-
-      //   float t1 = pow((radius*float(i)), .75 / r ) ;
-      //   float n = snoiseFractal(vec3( angle *8., radius * (.1 / r) * offset.x ,  1.) ) *.75 ;
-
-      //   float z1 = log(abs(sin(((radius  + n )) * 4. - uTime *2. * PI *0.4))) *.5;
-      //   float z2 = exp(-pos.z / radius * z1 ) *.25;
-      //   pos.z = z2 * t1;
-      //   pos.x = radius * cos(angle + uTime * .3) ;
-      //   pos.y = radius * sin(angle + uTime * .3) ;
-      // }
       gl_FragColor = vec4( pos);
     }
 `,

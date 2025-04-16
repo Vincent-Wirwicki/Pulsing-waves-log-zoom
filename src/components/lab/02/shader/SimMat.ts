@@ -115,7 +115,6 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
         pos.x = (radius) * cos(angle - uTime *0.3 ) ;
         pos.y = (radius) * sin(angle - uTime *0.3 ) ;
       }
-
       gl_FragColor = vec4(pos);
     }
 `,

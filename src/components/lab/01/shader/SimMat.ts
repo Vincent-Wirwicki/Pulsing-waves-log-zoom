@@ -87,7 +87,7 @@ export default class LabOne extends ShaderMaterial {
       float repeat = sin(time * 2. * PI);
 
       vec4 pos = texture2D( uPositions, uv );
-      float ogZ = pos.z;
+      vec4 ip = pos;
       float angle = atan(pos.x, pos.y);
       float radius = length(pos.xy);
       
@@ -101,13 +101,15 @@ export default class LabOne extends ShaderMaterial {
         float z1 = log(abs(sin(((radius  + n )) * 4. - uTime *2. * PI *0.4))) *.5;
         float z2 = exp(-pos.z / radius * z1 ) *.25;
         pos.z = z2 * t1;
-        
+        if(pos.z > 2.) pos.z = ip.z;
         // rotation
         pos.x = radius * cos(angle + uTime * .3) ;
         pos.y = radius * sin(angle + uTime * .3) ;
       }
-      // reset pos
-      // if(pos.z > 2.) pos.z = ogZ;
+
+      if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
+      if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
+      if(pos.z > 2.) pos.z = ip.z;
       gl_FragColor = vec4( pos);
     }
 `,
