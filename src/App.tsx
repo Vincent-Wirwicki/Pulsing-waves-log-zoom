@@ -11,7 +11,7 @@ const LabThree = lazy(() => import("./pages/LabThree"));
 const App = () => {
   const texSize = 1024;
   //init float 32 array particles data
-  // random2d generate position for a circle
+  // random2d generate position for
   const { particles, random2D } = useInitArrays({ size: texSize });
 
   const paths = [

@@ -26,7 +26,7 @@ const useInitArrays = ({ size = 512 }: { size?: number }) => {
 
       const x = r * Math.cos(theta);
       const y = r * Math.sin(theta);
-      const z = 0; // Adjusted for 2D
+      const z = 0;
       const w = 1;
 
       data[stride] = x;

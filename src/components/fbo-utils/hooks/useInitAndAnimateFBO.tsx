@@ -1,6 +1,6 @@
 import { useFBO } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { MutableRefObject, useEffect } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 import {
   Camera,
   FloatType,
@@ -19,7 +19,7 @@ const useInitAndAnimateFBO = (
   renderMatRef: MutableRefObject<ShaderMaterial | null>
 ) => {
   // create fbo texture
-  let target = useFBO(size, size, {
+  const target = useFBO(size, size, {
     minFilter: NearestFilter,
     magFilter: NearestFilter,
     format: RGBAFormat,
@@ -27,7 +27,7 @@ const useInitAndAnimateFBO = (
     // depth: true,
     // stencilBuffer: true,
   });
-  let target1 = target.clone();
+  const target1 = target.clone();
 
   const state = useThree();
 
@@ -41,26 +41,32 @@ const useInitAndAnimateFBO = (
     gl.clear();
     gl.render(scene, cam);
     gl.setRenderTarget(null);
+    return () => {
+      target.dispose();
+      target1.dispose();
+    };
   });
+
+  const fboA = useRef(target);
+  const fboB = useRef(target1);
 
   useFrame(state => {
     if (!simMatRef.current || !renderMatRef.current)
-      return console.error("no sim or render mat");
+      throw new Error(
+        "useInitAndAnimateFBO: simMatRef or renderMatRef not provided"
+      );
 
-    const { gl, clock, camera } = state;
-    console.log(camera.position);
+    const { gl, clock } = state;
     simMatRef.current.uniforms.uTime.value = clock.elapsedTime;
-    simMatRef.current.uniforms.uPositions.value = target.texture;
-    renderMatRef.current.uniforms.uPositions.value = target1.texture;
+    simMatRef.current.uniforms.uPositions.value = fboA.current.texture;
+    renderMatRef.current.uniforms.uPositions.value = fboB.current.texture;
 
-    gl.setRenderTarget(target1);
+    gl.setRenderTarget(fboB.current);
     gl.clear();
     gl.render(scene, cam);
     gl.setRenderTarget(null);
     //swap texture
-    const temp = target;
-    target = target1;
-    target1 = temp;
+    [fboA.current, fboB.current] = [fboB.current, fboA.current];
   });
 };
 

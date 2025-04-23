@@ -94,6 +94,7 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
       float time = mod(mod(uTime*0.15 , 1.0) + 1.0, 1.0);
       float repeat = sin(time * 2. * PI);
       vec4 pos = texture2D( uPositions, uv );
+      vec4 ip = pos;
 
       float angle = atan(pos.x, pos.y);
       float radius = length(pos.xy);
@@ -112,6 +113,12 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
         pos.x = (radius) * cos(angle - uTime *0.3 + r) ;
         pos.y = (radius) * sin(angle - uTime *0.3 + r) ;
       }
+
+      // reset particles pos
+      if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
+      if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
+      if(pos.z > 2.) pos.z = ip.z;
+
       gl_FragColor = vec4( pos);
     }
 `,
