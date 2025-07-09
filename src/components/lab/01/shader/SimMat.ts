@@ -101,7 +101,6 @@ export default class LabOne extends ShaderMaterial {
         float z1 = log(abs(sin(((radius  + n )) * 4. - uTime *2. * PI *0.4))) *.5;
         float z2 = exp(-pos.z / radius * z1 ) *.25;
         pos.z = z2 * t1;
-        if(pos.z > 2.) pos.z = ip.z;
         // rotation
         pos.x = radius * cos(angle + uTime * .3) ;
         pos.y = radius * sin(angle + uTime * .3) ;

@@ -1,7 +1,7 @@
 import MainCanvas from "../components/layout/MainCanvas";
 import SceneFBO from "../components/lab/01/scene/SceneFBO";
 
-const Home = ({
+const LabOne = ({
   size,
   pos,
   particles,
@@ -17,4 +17,4 @@ const Home = ({
   );
 };
 
-export default Home;
+export default LabOne;
