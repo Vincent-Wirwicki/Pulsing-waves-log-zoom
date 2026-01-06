@@ -2,32 +2,27 @@
 
 import { NavLink } from "react-router-dom";
 
-const Nav = ({
-  paths,
-}: {
-  paths: {
-    path: string;
-    title: string;
-  }[];
-}) => {
+const Nav = ({ paths }: { paths: string[] }) => {
   return (
-    <nav className="nav nav-grid main-border">
-      {paths.map(({ path, title }, i) => (
-        <MyLink key={`${path}-${title}-${i}`} path={path} title={title} />
+    <nav className="w-full h-12 flex items-center justify-center gap-4 bg-black ">
+      {paths.map((path, i) => (
+        <MyLink key={`${path}--${i}`} path={path} />
       ))}
     </nav>
   );
 };
 
-const MyLink = ({ path, title }: { path: string; title: string }) => {
+const MyLink = ({ path }: { path: string }) => {
   return (
     <NavLink
       className={({ isActive }) =>
-        `${isActive ? "text-[#30FF95]" : "text-white "} `
+        `${
+          isActive ? "bg-[#31f5ff]" : "bg-white"
+        } w-[15px] h-[15px]  rounded-full`
       }
       to={path}
     >
-      <span>{title}</span>
+      {/* <span className="block w-[20px] h-[20px] bg-white rounded-full"></span> */}
     </NavLink>
   );
 };

@@ -81,12 +81,6 @@ float snoiseFractal(vec3 m) {
 				+0.0666667* snoise(8.0*m);
 }
 
-vec3 sdgCircle( in vec2 p, in float r ) 
-{
-    float d = length(p);
-    return vec3( d-r, p/d );
-}
-
 float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax) { return oMin + (oMax - oMin) * (v - iMin) / (iMax - iMin); }
 
     void main(){
@@ -118,9 +112,9 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
       }
 
       // reset particles pos
-      if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
-      if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
-      if(pos.z > 2.) pos.z = ip.z;
+      // if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
+      // if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
+      // if(pos.z > 2.) pos.z = ip.z;
 
       gl_FragColor = vec4(pos);
     }

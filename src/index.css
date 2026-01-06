@@ -14,7 +14,7 @@
 
     html,
     body {
-        @apply bg-black text-neutral-200 major-mono
+        @apply bg-black text-neutral-200 font-mono
     }
 
     main {

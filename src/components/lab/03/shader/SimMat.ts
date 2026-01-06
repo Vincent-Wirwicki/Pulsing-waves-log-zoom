@@ -115,9 +115,9 @@ float map(in float v, in float iMin, in float iMax, in float oMin, in float oMax
       }
 
       // reset particles pos
-      if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
-      if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
-      if(pos.z > 2.) pos.z = ip.z;
+      // if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
+      // if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
+      // if(pos.z > 2.) pos.z = ip.z;
 
       gl_FragColor = vec4( pos);
     }

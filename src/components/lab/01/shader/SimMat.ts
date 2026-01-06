@@ -106,9 +106,9 @@ export default class LabOne extends ShaderMaterial {
         pos.y = radius * sin(angle + uTime * .3) ;
       }
 
-      if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
-      if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
-      if(pos.z > 2.5 || pos.z < -2.5) pos.z = ip.z;
+      // if(pos.x > 2.5 || pos.x < -2.5) pos.x = ip.x;
+      // if(pos.y > 2.5 || pos.y < -2.5) pos.y = ip.y;
+      // if(pos.z > 2.5 || pos.z < -2.5) pos.z = ip.z;
       gl_FragColor = vec4( pos);
     }
 `,

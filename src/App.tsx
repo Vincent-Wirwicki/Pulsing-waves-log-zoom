@@ -17,11 +17,7 @@ const App = () => {
   //init float 32 array particles data
   const { particles, random2D } = useInitArrays({ size: texSize });
 
-  const paths = [
-    { path: "/", title: "V_0_1" },
-    { path: "/02", title: "V_0_2" },
-    { path: "/03", title: "V_0_3" },
-  ];
+  const paths = ["/", "/02", "/03"];
 
   return (
     <Routes>

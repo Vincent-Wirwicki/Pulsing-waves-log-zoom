@@ -56,7 +56,7 @@ export default class RenderMatTest extends ShaderMaterial {
           vec3 color = uColor;
           vec3 v = (vibrance(vPos, .25));
         
-          vec3 w = water(v.z);
+          vec3 w = water(vPos.z);
   
           vec3 tone = tonemapACES(w) * .5;
           // v*=0.5;
