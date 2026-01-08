@@ -5,24 +5,21 @@ import Nav from "./Nav";
 const Layout = ({ paths }: { paths: string[] }) => {
   return (
     <main>
-      <section className="  w-full h-full flex flex-col  ">
-        <div className="w-full h-12 flex items-center justify-center gap-4 bg-black  font-bold">
-          Until it fades
+      <section className="  w-full h-full flex flex-col gap-4  ">
+        <div className="w-full h-12 flex items-end justify-between bg-black font-bold text-neutral-200 border-b border-neutral-600 tracking-wide uppercase">
+          <h1>Shader lab</h1>
+          <h2>Until it fades</h2>
+          <a
+            href="https://github.com/Vincent-Wirwicki/Pulsing-waves-log-zoom"
+            target="_blank"
+          >
+            Github
+          </a>
         </div>
-        <div className=" w-full h-full col-span-8 row-span-6 z-10 rounded-2xl overflow-hidden border-neutral-900">
+        <div className=" w-full h-full col-span-8 row-span-6 z-10 rounded-2xl overflow-hidden ">
           <Outlet />
         </div>
         <Nav paths={paths} />
-
-        {/* <h1 className="title col-start-1 row-start-1 main-border">
-          void waves
-        </h1>
-        <p className="relative z-30 row-span-3 row-start-6 col-start-1 lg:col-start-3 lg:col-span-2  w-fit bg-black self-end text-white p-4 font-mono main-border">
-          Experiment with fractal zoom
-        </p>
-        <div className="relative z-30 col-start-8 row-start-6 w-fit bg-black self-end justify-self-end main-border p-2 text-xs md:text-base">
-          <GithubIcon />
-        </div> */}
       </section>
     </main>
   );

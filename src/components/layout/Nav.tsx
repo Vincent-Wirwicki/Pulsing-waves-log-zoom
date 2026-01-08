@@ -1,10 +1,9 @@
-"use client";
-
 import { NavLink } from "react-router-dom";
 
 const Nav = ({ paths }: { paths: string[] }) => {
   return (
-    <nav className="w-full h-12 flex items-center justify-center gap-4 bg-black ">
+    <nav className="relative w-full h-12 flex items-center justify-center  gap-4 ">
+      {/* <p>Fractal zoom</p> */}
       {paths.map((path, i) => (
         <MyLink key={`${path}--${i}`} path={path} />
       ))}
@@ -17,13 +16,11 @@ const MyLink = ({ path }: { path: string }) => {
     <NavLink
       className={({ isActive }) =>
         `${
-          isActive ? "bg-[#31f5ff]" : "bg-white"
-        } w-[15px] h-[15px]  rounded-full`
+          isActive ? "border border-[#31f5ff] " : "border border-neutral-500"
+        } w-[20px] h-[20px]  rounded-full border-4`
       }
       to={path}
-    >
-      {/* <span className="block w-[20px] h-[20px] bg-white rounded-full"></span> */}
-    </NavLink>
+    ></NavLink>
   );
 };
 

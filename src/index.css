@@ -14,33 +14,11 @@
 
     html,
     body {
-        @apply bg-black text-neutral-200 font-mono
+        @apply bg-black text-neutral-200
     }
 
     main {
         @apply fixed top-0 left-0 w-screen h-screen flex justify-center items-center lg:p-20 md:p-10 sm:p-2
     }
 
-}
-
-@layer components {
-    .title {
-        @apply absolute z-20 lg:text-2xl md:text-xl sm:text-lg p-4 bg-black text-lg text-[#30FF95]
-    }
-
-    .nav {
-        @apply relative z-30 h-fit w-full lg:text-base sm:text-xs bg-black flex flex-col md:flex-row justify-center gap-4 p-2
-    }
-
-    .nav-grid {
-        @apply col-start-7 col-span-8 row-start-1 row-span-2 md:row-span-1 lg:col-start-6 lg:col-span-1 md:col-start-6 md:col-span-3
-    }
-
-}
-
-@layer utilities {
-
-    .main-border {
-        @apply border border-[#31f5ff]
-    }
 }
